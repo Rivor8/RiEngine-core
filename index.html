@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game</title>
+</head>
+<body>
+  <script src="Settings/settings.js"></script>
+  <script src="core.js"></script>
+  <script src="Maps/map1.js"></script>
+  <script src="Maps/paralaxtest.js"></script>
+  <script src="loading.js"></script>
+  <script src="Scripts/Free camera script.js"></script>
+  <script>
+    /*Start game*/
+    Game.loading()
+    //Resources init
+    let resScript = document.createElement('script')
+    resScript.src = 'resources.js'
+    document.body.appendChild(resScript)
+
+    resScript.onload = function () {
+      Time.now = performance.now()
+      Time.last = performance.now()
+      Time.deltaTime = 0
+      Time.step = 1 / 60
+      Ri.loadMap(Settings.startMap)
+      Game.gameLoop()
+    }
+  </script>
+</body>
+</html>
